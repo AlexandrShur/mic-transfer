@@ -24,14 +24,12 @@ public class Client extends AsyncTask<Void, Void, Void> {
 	String response = "";
 	TextView textResponse;
 
-
-	public byte[] buffer;
+	//static AudioFormat format;
 	AudioRecord audioRecord;
-
 	private int sampleRate = 16000;
-	private int channelConfig = AudioFormat.CHANNEL_IN_MONO;
+	private int channelConfig = AudioFormat.CHANNEL_CONFIGURATION_MONO;
 	private int audioFormat = AudioFormat.ENCODING_PCM_16BIT;
-
+	int minBufSize = AudioRecord.getMinBufferSize(sampleRate, channelConfig, audioFormat);
 	public boolean status  = true;
 
 	Client(String addr, int port,TextView textResponse) {
@@ -42,13 +40,10 @@ public class Client extends AsyncTask<Void, Void, Void> {
 
 	@Override
 	protected Void doInBackground(Void... arg0) {
-
 		Socket socket = null;
-
 		try {
 			socket = new Socket(dstAddress, dstPort);
 			someK(socket);
-
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,8 +66,8 @@ public class Client extends AsyncTask<Void, Void, Void> {
 	}
 
 	void someK(Socket socket) {
-		int minBufSize = AudioRecord.getMinBufferSize(sampleRate, channelConfig, audioFormat);
-
+		//int minBufSize = AudioRecord.getMinBufferSize(sampleRate, channelConfig, audioFormat);
+		//textResponse.setText("Connected to Sphinx Server");
 		byte[] buffer = new byte[minBufSize];
 
 		audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, sampleRate, channelConfig, audioFormat, minBufSize);
@@ -86,7 +81,6 @@ public class Client extends AsyncTask<Void, Void, Void> {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			textResponse.setText(response);
 		}
 	}
 	@Override

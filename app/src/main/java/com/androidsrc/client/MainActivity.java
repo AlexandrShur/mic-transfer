@@ -35,7 +35,8 @@ public class MainActivity extends Activity {
 		buttonConnect = (Button) findViewById(R.id.connectButton);
 		buttonClear = (Button) findViewById(R.id.clearButton);
 		response = (TextView) findViewById(R.id.responseTextView);
-
+		editTextAddress.setText("10.0.9.222");
+		editTextPort.setText("3345");
 		buttonConnect.setOnClickListener(new OnClickListener() {
 
 			@Override

@@ -8,11 +8,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
         android:autoLink="web"
         android:text="Mic Transfer"
-        android:textStyle="bold" />
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 
     <EditText
         android:id="@+id/addressEditText"
@@ -42,6 +42,7 @@
     <TextView
         android:id="@+id/responseTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 
 </LinearLayout>
